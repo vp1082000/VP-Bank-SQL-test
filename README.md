@@ -43,9 +43,9 @@ Staff_id| Staff_name| Salary| Department_Id
 9| Khanh| 800|1
 10| Tung| 600| 3
 
-6. Tìm nhân viên có mức lương cao nhất ở mỗi phòng/ban.		
-Kết quả trả về gồm các cột như sau:
+6. Tìm nhân viên có mức lương cao nhất ở mỗi phòng/ban.
 
+Kết quả trả về gồm các cột như sau:
 Staff_id| Staff_name| Department_name| Salary
 ---|---|---|---
  | | | | |		
