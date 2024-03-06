@@ -127,21 +127,21 @@ FROM Contact_table
 
 ---Q10: Trả về tất cả các bản ghi mà thuộc chuỗi ít nhất 3 ngày liên tiếp số lượng khách tham quan bằng hoặc trên 100 người
 WITH TMP AS (
-	SELECT Visit_date AS CUR_DATE,
-	    LAG(Visit_date, 1) OVER (ORDER BY Visit_date) AS LAG1_DATE,
-		LAG(Visit_date, 2) OVER (ORDER BY Visit_date) AS LAG2_DATE,
-		No_of_visitors AS CUR_VISITORS,
-		LAG(No_of_visitors, 1) OVER (ORDER BY Visit_date) AS LAG1_VISITORS,
-		LAG(No_of_visitors, 2) OVER (ORDER BY Visit_date) AS LAG2_VISITORS
-	FROM Visitor_table
+    SELECT Visit_date AS CUR_DATE,
+        LAG(Visit_date, 1) OVER (ORDER BY Visit_date) AS LAG1_DATE,
+        LAG(Visit_date, 2) OVER (ORDER BY Visit_date) AS LAG2_DATE,
+        No_of_visitors AS CUR_VISITORS,
+        LAG(No_of_visitors, 1) OVER (ORDER BY Visit_date) AS LAG1_VISITORS,
+        LAG(No_of_visitors, 2) OVER (ORDER BY Visit_date) AS LAG2_VISITORS
+    SELECT Visit_date AS CUR_DATE,FROM Visitor_table
 ),
 SASTIFIED_RECORDS AS (
-	SELECT 
+    SELECT 
         CUR_DATE, 
         LAG1_DATE, 
         LAG2_DATE
-	FROM TMP
-	WHERE CUR_VISITORS >= 100 AND LAG1_VISITORS >= 100 AND LAG2_VISITORS >= 100
+    FROM TMP
+    WHERE CUR_VISITORS >= 100 AND LAG1_VISITORS >= 100 AND LAG2_VISITORS >= 100
 )
 SELECT CUR_DATE FROM SASTIFIED_RECORDS
 UNION
